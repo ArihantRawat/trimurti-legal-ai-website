@@ -85,6 +85,8 @@ Deployment is handled by GitHub Actions in `.github/workflows/deploy-pages.yml`.
 
 The workflow runs on every push to `main` and can also be started manually from the Actions tab. It installs Flutter, runs analysis and tests, builds the web app with the GitHub Pages base path, uploads `build/web`, and deploys it through GitHub Pages.
 
+For private repositories, GitHub Pages must be supported by the account or organization plan. If Pages is not available for private repositories on the current plan, the build steps will pass but the Pages configuration step will be blocked by GitHub.
+
 Expected Pages URL:
 
 ```text
