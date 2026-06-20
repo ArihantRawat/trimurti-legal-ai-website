@@ -36,6 +36,7 @@ class RevealOnScroll extends StatefulWidget {
 
 class _RevealOnScrollState extends State<RevealOnScroll> {
   bool _visible = false;
+  bool _checkQueued = false;
 
   @override
   void initState() {
@@ -61,6 +62,7 @@ class _RevealOnScrollState extends State<RevealOnScroll> {
   }
 
   void _checkVisibility() {
+    _checkQueued = false;
     if (_visible || !mounted) return;
     final box = context.findRenderObject() as RenderBox?;
     if (box == null || !box.hasSize) return;
@@ -81,15 +83,20 @@ class _RevealOnScrollState extends State<RevealOnScroll> {
   @override
   Widget build(BuildContext context) {
     if (Motion.reduce(context)) return widget.child;
+    final visible = _visible || MediaQuery.sizeOf(context).height > 1400;
+    if (!_visible && !_checkQueued) {
+      _checkQueued = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) => _checkVisibility());
+    }
 
     return AnimatedOpacity(
       duration: Motion.duration(context, 560),
       curve: Motion.curve,
-      opacity: _visible ? 1 : 0,
+      opacity: visible ? 1 : 0,
       child: AnimatedSlide(
         duration: Motion.duration(context, 560),
         curve: Motion.curve,
-        offset: _visible ? Offset.zero : Offset(0, widget.offset / 100),
+        offset: visible ? Offset.zero : Offset(0, widget.offset / 100),
         child: widget.child,
       ),
     );

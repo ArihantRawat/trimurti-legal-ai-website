@@ -42,7 +42,7 @@ class SectionHeader extends StatelessWidget {
               (mobile
                       ? Theme.of(context).textTheme.headlineLarge
                       : Theme.of(context).textTheme.displayMedium)
-                  ?.copyWith(fontSize: mobile ? 34 : null),
+                  ?.copyWith(fontSize: mobile ? 30 : null),
         ),
         const SizedBox(height: 16),
         ConstrainedBox(
