@@ -28,7 +28,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
@@ -50,13 +50,13 @@ jobs:
 
       - name: Configure Pages
         if: ${{ github.event.repository.visibility == 'public' || inputs.deploy_pages == true }}
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
         with:
           enablement: true
 
       - name: Upload Pages artifact
         if: ${{ github.event.repository.visibility == 'public' || inputs.deploy_pages == true }}
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: build/web
 
@@ -72,4 +72,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
