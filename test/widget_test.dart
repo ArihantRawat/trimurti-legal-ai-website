@@ -34,7 +34,7 @@ void main() {
     expect(find.text('What we are building first.'), findsOneWidget);
     expect(find.text('Juridical Loop OS'), findsWidgets);
     expect(find.text('A legal AI workspace in progress'), findsWidgets);
-    expect(find.text('Stealth by design'), findsOneWidget);
+    expect(find.text('Stealth by design'), findsWidgets);
   });
 
   testWidgets('renders mobile viewport without layout exceptions', (

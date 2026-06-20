@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../core/responsive/breakpoints.dart';
 import '../../../core/theme/app_theme.dart';
-import '../../../shared/data/site_content.dart';
-import '../../../shared/widgets/feature_card.dart';
 import '../../../shared/widgets/section_header.dart';
 import 'stealth_system_panel.dart';
 
@@ -21,7 +19,7 @@ class ProductVisionSection extends StatelessWidget {
               eyebrow: 'Product vision',
               title: 'What we are building first.',
               description:
-                  'A private legal AI workspace for drafting, research, matter context, and review.',
+                  'A private legal AI workspace shaped around context, sources, and review.',
               centered: true,
             ),
             const SizedBox(height: 34),
@@ -72,11 +70,36 @@ class _VisionCards extends StatelessWidget {
           spacing: spacing,
           runSpacing: spacing,
           children: [
-            for (final item in whatWeDo)
-              SizedBox(
-                width: width,
-                child: FeatureCard(item: item),
+            SizedBox(
+              width: width,
+              child: const _VisionCard(
+                icon: Icons.shield_outlined,
+                title: 'Private workspace',
+                description:
+                    'Sensitive work should feel contained, clear, and easy to review.',
+                color: AppColors.blue,
               ),
+            ),
+            SizedBox(
+              width: width,
+              child: const _VisionCard(
+                icon: Icons.source_outlined,
+                title: 'Source visibility',
+                description:
+                    'Research and draft support should keep sources close to the work.',
+                color: AppColors.teal,
+              ),
+            ),
+            SizedBox(
+              width: width,
+              child: const _VisionCard(
+                icon: Icons.hub_outlined,
+                title: 'Matter context',
+                description:
+                    'Notes, versions, tasks, and review steps should stay connected.',
+                color: AppColors.purple,
+              ),
+            ),
             SizedBox(
               width: width,
               child: Container(
@@ -114,6 +137,50 @@ class _VisionCards extends StatelessWidget {
           ],
         );
       },
+    );
+  }
+}
+
+class _VisionCard extends StatelessWidget {
+  const _VisionCard({
+    required this.icon,
+    required this.title,
+    required this.description,
+    required this.color,
+  });
+
+  final IconData icon;
+  final String title;
+  final String description;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.78),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: AppColors.deepNavy.withValues(alpha: 0.10)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+              color: color.withValues(alpha: 0.09),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Icon(icon, color: color, size: 22),
+          ),
+          const SizedBox(height: 18),
+          Text(title, style: Theme.of(context).textTheme.titleLarge),
+          const SizedBox(height: 10),
+          Text(description, style: Theme.of(context).textTheme.bodyMedium),
+        ],
+      ),
     );
   }
 }
