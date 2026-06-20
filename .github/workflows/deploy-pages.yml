@@ -5,6 +5,12 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      deploy_pages:
+        description: "Attempt GitHub Pages deployment. Use only when Pages is enabled for this repository."
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -43,11 +49,13 @@ jobs:
         run: flutter build web --release --base-href "/trimurti-legal-ai-website/"
 
       - name: Configure Pages
+        if: ${{ github.event.repository.visibility == 'public' || inputs.deploy_pages == true }}
         uses: actions/configure-pages@v5
         with:
           enablement: true
 
       - name: Upload Pages artifact
+        if: ${{ github.event.repository.visibility == 'public' || inputs.deploy_pages == true }}
         uses: actions/upload-pages-artifact@v3
         with:
           path: build/web
@@ -55,6 +63,7 @@ jobs:
   deploy:
     name: Deploy Pages
     needs: build
+    if: ${{ github.event.repository.visibility == 'public' || inputs.deploy_pages == true }}
     runs-on: ubuntu-latest
     environment:
       name: github-pages
