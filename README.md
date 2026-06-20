@@ -85,7 +85,16 @@ Deployment is handled by GitHub Actions in `.github/workflows/deploy-pages.yml`.
 
 The workflow runs on every push to `main` and can also be started manually from the Actions tab. It installs Flutter, runs analysis and tests, builds the web app with the GitHub Pages base path, uploads `build/web`, and deploys it through GitHub Pages.
 
-For private repositories, GitHub Pages must be supported by the account or organization plan. If Pages is not available for private repositories on the current plan, the build steps will pass but the Pages configuration step will be blocked by GitHub.
+The site includes `web/.nojekyll` so GitHub Pages serves Flutter web assets as plain static files.
+
+For private repositories, GitHub Pages must be supported by the account or organization plan. If Pages is not available for private repositories on the current plan, keep the workflow as-is and either upgrade the plan or make the repository public before enabling Pages.
+
+To enable Pages:
+
+1. Open the repository on GitHub.
+2. Go to `Settings` > `Pages`.
+3. Set `Build and deployment` to `GitHub Actions`.
+4. Run `Deploy Flutter web to GitHub Pages` from the Actions tab, or push to `main`.
 
 Expected Pages URL:
 
