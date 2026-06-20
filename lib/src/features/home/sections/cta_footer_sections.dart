@@ -110,6 +110,10 @@ class FooterSection extends StatelessWidget {
         _FooterLink('FAQ', onFaq),
         _FooterLink('Security', onSecurity),
       ],
+      'Contact': [
+        _FooterLink('Email Trimurti', onContact),
+        _FooterLink('Learn more', onContact),
+      ],
     };
 
     return Container(
@@ -152,7 +156,7 @@ class FooterSection extends StatelessWidget {
                 children: [
                   for (final entry in columns.entries)
                     SizedBox(
-                      width: 130,
+                      width: 132,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

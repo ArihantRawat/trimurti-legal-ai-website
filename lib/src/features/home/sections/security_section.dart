@@ -26,6 +26,8 @@ class SecuritySection extends StatelessWidget {
               ),
               const SizedBox(height: 28),
               const FeatureGrid(items: securityFeatures),
+              const SizedBox(height: 20),
+              const _SecurityPriorityStrip(),
             ],
           );
           const visual = _SecurityVisual();
@@ -43,6 +45,49 @@ class SecuritySection extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+}
+
+class _SecurityPriorityStrip extends StatelessWidget {
+  const _SecurityPriorityStrip();
+
+  @override
+  Widget build(BuildContext context) {
+    final priorities = [
+      (Icons.lock_outline, 'Privacy first'),
+      (Icons.admin_panel_settings, 'Access control'),
+      (Icons.fact_check, 'Source visibility'),
+      (Icons.visibility_outlined, 'Review clarity'),
+    ];
+
+    return Wrap(
+      spacing: 10,
+      runSpacing: 10,
+      children: [
+        for (final priority in priorities)
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 10),
+            decoration: BoxDecoration(
+              color: Colors.white.withValues(alpha: 0.70),
+              borderRadius: BorderRadius.circular(999),
+              border: Border.all(
+                color: AppColors.deepNavy.withValues(alpha: 0.08),
+              ),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(priority.$1, color: AppColors.teal, size: 17),
+                const SizedBox(width: 8),
+                Text(
+                  priority.$2,
+                  style: Theme.of(context).textTheme.labelMedium,
+                ),
+              ],
+            ),
+          ),
+      ],
     );
   }
 }

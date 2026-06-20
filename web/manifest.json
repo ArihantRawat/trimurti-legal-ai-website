@@ -1,11 +1,11 @@
 {
-    "name": "trimurti_marketing",
-    "short_name": "trimurti_marketing",
+    "name": "Trimurti",
+    "short_name": "Trimurti",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#F8F8F6",
+    "theme_color": "#0D2137",
+    "description": "Juridical Loop OS is a legal AI workspace being built by Trimurti for modern law firms.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
