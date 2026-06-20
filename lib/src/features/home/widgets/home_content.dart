@@ -5,9 +5,12 @@ import '../home_anchors.dart';
 import '../home_config.dart';
 import '../sections/cta_footer_sections.dart';
 import '../sections/feature_sections.dart';
+import '../sections/principle_carousel_section.dart';
 import '../sections/process_section.dart';
 import '../sections/product_sections.dart';
 import '../sections/security_section.dart';
+import '../sections/use_case_rail_section.dart';
+import 'announcement_banner.dart';
 import 'faq_section.dart';
 import 'hero_section.dart';
 import 'product_vision_section.dart';
@@ -31,6 +34,7 @@ class HomeContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        AnnouncementBanner(onContact: onContact),
         KeyedSubtree(
           key: anchors.hero,
           child: HeroSection(
@@ -41,7 +45,7 @@ class HomeContent extends StatelessWidget {
         RevealOnScroll(controller: revealController, child: const TrustBar()),
         RevealOnScroll(
           controller: revealController,
-          child: const WhatWeDoSection(),
+          child: UseCaseRailSection(onContact: onContact),
         ),
         RevealOnScroll(
           controller: revealController,
@@ -49,6 +53,10 @@ class HomeContent extends StatelessWidget {
             key: anchors.vision,
             child: const ProductVisionSection(),
           ),
+        ),
+        RevealOnScroll(
+          controller: revealController,
+          child: const PrincipleCarouselSection(),
         ),
         if (HomeConfig.showDetailedSections) ...[
           RevealOnScroll(

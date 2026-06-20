@@ -22,7 +22,7 @@ class HeroSection extends StatelessWidget {
     return ConstrainedPage(
       child: Padding(
         padding: EdgeInsets.only(
-          top: mobile ? 56 : 88,
+          top: mobile ? 42 : 70,
           bottom: mobile ? 56 : 86,
         ),
         child: Column(
@@ -71,8 +71,6 @@ class HeroSection extends StatelessWidget {
                 );
               },
             ),
-            const SizedBox(height: 38),
-            const _HeroMetrics(),
           ],
         ),
       ),
@@ -163,90 +161,6 @@ class _HeroCopy extends StatelessWidget {
             ),
           ],
         ),
-      ],
-    );
-  }
-}
-
-class _HeroMetrics extends StatelessWidget {
-  const _HeroMetrics();
-
-  @override
-  Widget build(BuildContext context) {
-    final mobile = Breakpoints.isMobile(context);
-    final metrics = [
-      ('Drafting', 'Cleaner first drafts'),
-      ('Research', 'Clear sources'),
-      ('Matters', 'Work in one place'),
-      ('Review', 'Lawyer controlled'),
-    ];
-
-    return Wrap(
-      spacing: 12,
-      runSpacing: 12,
-      alignment: WrapAlignment.center,
-      children: [
-        for (final metric in metrics)
-          Container(
-            width: mobile ? double.infinity : null,
-            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
-            decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha: 0.62),
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(
-                color: AppColors.deepNavy.withValues(alpha: 0.09),
-              ),
-            ),
-            child: mobile
-                ? Row(
-                    children: [
-                      Container(
-                        width: 7,
-                        height: 7,
-                        decoration: const BoxDecoration(
-                          color: AppColors.teal,
-                          shape: BoxShape.circle,
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      Text(
-                        metric.$1,
-                        style: Theme.of(context).textTheme.labelLarge,
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: Text(
-                          metric.$2,
-                          style: Theme.of(context).textTheme.bodyMedium,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  )
-                : Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Container(
-                        width: 7,
-                        height: 7,
-                        decoration: const BoxDecoration(
-                          color: AppColors.teal,
-                          shape: BoxShape.circle,
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      Text(
-                        metric.$1,
-                        style: Theme.of(context).textTheme.labelLarge,
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        metric.$2,
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                    ],
-                  ),
-          ),
       ],
     );
   }
