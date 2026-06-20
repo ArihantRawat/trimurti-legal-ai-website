@@ -32,3 +32,29 @@ class FaqItem {
   final String question;
   final String answer;
 }
+
+class UseCaseItem {
+  const UseCaseItem({
+    required this.title,
+    required this.description,
+    required this.icon,
+    required this.color,
+  });
+
+  final String title;
+  final String description;
+  final IconData icon;
+  final Color color;
+}
+
+class PrincipleItem {
+  const PrincipleItem({
+    required this.title,
+    required this.description,
+    required this.label,
+  });
+
+  final String title;
+  final String description;
+  final String label;
+}

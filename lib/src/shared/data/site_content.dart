@@ -10,6 +10,13 @@ const trustBadges = <String>[
   'Focused on sensitive legal work',
 ];
 
+const trustSignals = <String>[
+  'Built by Trimurti',
+  'Backed by the MIT Sandbox Innovation Fund Program',
+  'Designed for legal professionals',
+  'Focused on privacy, sources, and review',
+];
+
 const whatWeDo = <FeatureItem>[
   FeatureItem(
     title: 'Drafting',
@@ -31,6 +38,58 @@ const whatWeDo = <FeatureItem>[
         'We are bringing comments, tasks, versions, and checklists closer to the matter itself.',
     icon: Icons.account_tree,
     color: AppColors.purple,
+  ),
+];
+
+const useCases = <UseCaseItem>[
+  UseCaseItem(
+    title: 'Drafting',
+    description:
+        'Move from matter context to cleaner first drafts while keeping review at the center.',
+    icon: Icons.edit_document,
+    color: AppColors.blue,
+  ),
+  UseCaseItem(
+    title: 'Legal research',
+    description:
+        'Find useful sources faster and keep the path from search to memo easier to check.',
+    icon: Icons.manage_search,
+    color: AppColors.teal,
+  ),
+  UseCaseItem(
+    title: 'Matter context',
+    description:
+        'Bring notes, drafts, tasks, and versions closer to the legal work they support.',
+    icon: Icons.account_tree,
+    color: AppColors.purple,
+  ),
+  UseCaseItem(
+    title: 'Review',
+    description:
+        'Shape outputs around lawyer judgment, clear sources, and careful final review.',
+    icon: Icons.fact_check,
+    color: AppColors.amber,
+  ),
+];
+
+const buildPrinciples = <PrincipleItem>[
+  PrincipleItem(
+    title: 'Trust starts with restraint.',
+    description:
+        'We share the product direction at a high level while we build carefully for sensitive legal work.',
+    label: 'Stealth by design',
+  ),
+  PrincipleItem(
+    title: 'Legal work needs visible sources.',
+    description:
+        'Research and drafting flows should make it easier for lawyers to see what informed the work.',
+    label: 'Clear sources',
+  ),
+  PrincipleItem(
+    title: 'The lawyer stays in control.',
+    description:
+        'Juridical Loop OS is being shaped to support professional judgment, not replace it.',
+    label: 'Lawyer review',
   ),
 ];
 
