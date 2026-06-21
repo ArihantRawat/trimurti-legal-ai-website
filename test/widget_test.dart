@@ -16,7 +16,10 @@ void main() {
     await tester.pumpWidget(const TrimurtiApp());
 
     expect(find.text('Trimurti'), findsWidgets);
-    expect(find.text('Legal work, with more clarity'), findsOneWidget);
+    expect(
+      find.text('The AI operating system for modern law firms'),
+      findsOneWidget,
+    );
     expect(find.text('Contact us'), findsWidgets);
     expect(find.text('View product vision'), findsOneWidget);
   });
@@ -31,9 +34,12 @@ void main() {
 
     await tester.pumpWidget(const TrimurtiApp());
 
-    expect(find.text('What we are building first.'), findsOneWidget);
+    expect(
+      find.text('One workspace for the legal work behind the work.'),
+      findsOneWidget,
+    );
     expect(find.text('Juridical Loop OS'), findsWidgets);
-    expect(find.text('A legal AI workspace in progress'), findsWidgets);
+    expect(find.text('Operating layer for legal work'), findsWidgets);
     expect(find.text('Stealth by design'), findsWidgets);
   });
 

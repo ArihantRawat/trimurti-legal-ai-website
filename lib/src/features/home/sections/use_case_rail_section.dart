@@ -160,9 +160,11 @@ class _UseCasePill extends StatelessWidget {
                     size: 18,
                   ),
                   const SizedBox(width: 8),
-                  Flexible(
+                  Expanded(
                     child: Text(
                       item.title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.labelLarge?.copyWith(
                         color: selected ? Colors.white : AppColors.deepNavy,
                       ),
@@ -243,6 +245,8 @@ class _UseCasePanel extends StatelessWidget {
                 color: Colors.white.withValues(alpha: 0.76),
               ),
             ),
+            const SizedBox(height: 22),
+            _UseCaseSignals(item: item),
             const SizedBox(height: 28),
             PremiumButton(
               label: 'Contact us',
@@ -253,6 +257,44 @@ class _UseCasePanel extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _UseCaseSignals extends StatelessWidget {
+  const _UseCaseSignals({required this.item});
+
+  final UseCaseItem item;
+
+  @override
+  Widget build(BuildContext context) {
+    final signals = switch (item.title) {
+      'Draft' => ['Matter facts', 'Clause history', 'Review notes'],
+      'Research' => ['Relevant sources', 'Citation path', 'Memo outline'],
+      'Organize' => ['Tasks', 'Versions', 'Communications'],
+      _ => ['Open issues', 'Source checks', 'Next steps'],
+    };
+
+    return Wrap(
+      spacing: 10,
+      runSpacing: 10,
+      children: [
+        for (final signal in signals)
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
+            decoration: BoxDecoration(
+              color: Colors.white.withValues(alpha: 0.09),
+              borderRadius: BorderRadius.circular(999),
+              border: Border.all(color: Colors.white.withValues(alpha: 0.12)),
+            ),
+            child: Text(
+              signal,
+              style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                color: Colors.white.withValues(alpha: 0.82),
+              ),
+            ),
+          ),
+      ],
     );
   }
 }

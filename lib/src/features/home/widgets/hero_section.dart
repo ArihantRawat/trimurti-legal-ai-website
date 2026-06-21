@@ -22,8 +22,8 @@ class HeroSection extends StatelessWidget {
     return ConstrainedPage(
       child: Padding(
         padding: EdgeInsets.only(
-          top: mobile ? 42 : 70,
-          bottom: mobile ? 56 : 86,
+          top: mobile ? 38 : 64,
+          bottom: mobile ? 52 : 82,
         ),
         child: Column(
           children: [
@@ -36,11 +36,9 @@ class HeroSection extends StatelessWidget {
                 );
                 final panel = const StealthSystemPanel(compact: true);
                 final stackedMockup = mobile
-                    ? Center(
-                        child: ConstrainedBox(
-                          constraints: const BoxConstraints(maxWidth: 300),
-                          child: panel,
-                        ),
+                    ? Align(
+                        alignment: Alignment.centerLeft,
+                        child: SizedBox(width: 312, child: panel),
                       )
                     : panel;
 
@@ -63,7 +61,7 @@ class HeroSection extends StatelessWidget {
                     Expanded(
                       flex: 9,
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 56),
+                        padding: const EdgeInsets.only(top: 34),
                         child: panel,
                       ),
                     ),
@@ -124,26 +122,37 @@ class _HeroCopy extends StatelessWidget {
         const SizedBox(height: 28),
         Text(
           mobile
-              ? 'Legal work,\nwith more clarity'
-              : 'Legal work, with more clarity',
+              ? 'The AI operating\nsystem for modern\nlaw firms'
+              : 'The AI operating system for modern law firms',
           softWrap: true,
           textWidthBasis: TextWidthBasis.parent,
           style: Theme.of(
             context,
-          ).textTheme.displayLarge?.copyWith(fontSize: mobile ? 36 : 66),
+          ).textTheme.displayLarge?.copyWith(fontSize: mobile ? 33 : 70),
         ),
         const SizedBox(height: 24),
         ConstrainedBox(
           constraints: BoxConstraints(maxWidth: mobile ? 330 : 690),
           child: Text(
-            'Trimurti is building Juridical Loop OS, a focused AI workspace for modern law firms.',
+            'Trimurti is building Juridical Loop OS to help legal teams draft faster, research smarter, and work with greater confidence.',
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               fontSize: mobile ? 17 : 20,
               color: AppColors.ink,
             ),
           ),
         ),
-        const SizedBox(height: 32),
+        const SizedBox(height: 18),
+        ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: mobile ? 330 : 620),
+          child: Text(
+            'A focused workspace for matter context, source-backed work, and lawyer review.',
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              fontSize: mobile ? 15 : 16,
+              color: AppColors.muted,
+            ),
+          ),
+        ),
+        const SizedBox(height: 30),
         Wrap(
           spacing: 14,
           runSpacing: 12,

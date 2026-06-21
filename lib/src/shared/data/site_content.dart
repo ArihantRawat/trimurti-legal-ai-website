@@ -13,8 +13,8 @@ const trustBadges = <String>[
 const trustSignals = <String>[
   'Built by Trimurti',
   'Backed by the MIT Sandbox Innovation Fund Program',
-  'Designed for legal professionals',
-  'Focused on privacy, sources, and review',
+  'Built for legal professionals',
+  'Private, source-aware, review-first direction',
 ];
 
 const whatWeDo = <FeatureItem>[
@@ -43,30 +43,30 @@ const whatWeDo = <FeatureItem>[
 
 const useCases = <UseCaseItem>[
   UseCaseItem(
-    title: 'Drafting',
+    title: 'Draft',
     description:
-        'Move from matter context to cleaner first drafts while keeping review at the center.',
+        'Turn matter context into a cleaner starting point for contracts, memos, and client updates.',
     icon: Icons.edit_document,
     color: AppColors.blue,
   ),
   UseCaseItem(
-    title: 'Legal research',
+    title: 'Research',
     description:
-        'Find useful sources faster and keep the path from search to memo easier to check.',
+        'Move from a question to relevant sources, notes, and a first memo outline that is easier to check.',
     icon: Icons.manage_search,
     color: AppColors.teal,
   ),
   UseCaseItem(
-    title: 'Matter context',
+    title: 'Organize',
     description:
-        'Bring notes, drafts, tasks, and versions closer to the legal work they support.',
+        'Keep drafts, notes, tasks, comments, and versions close to the matter they support.',
     icon: Icons.account_tree,
     color: AppColors.purple,
   ),
   UseCaseItem(
     title: 'Review',
     description:
-        'Shape outputs around lawyer judgment, clear sources, and careful final review.',
+        'Keep lawyer judgment in the loop with clearer sources, open issues, and next steps.',
     icon: Icons.fact_check,
     color: AppColors.amber,
   ),
@@ -76,17 +76,17 @@ const buildPrinciples = <PrincipleItem>[
   PrincipleItem(
     title: 'Trust starts with restraint.',
     description:
-        'We share the product direction at a high level while we build carefully for sensitive legal work.',
+        'We keep the public story focused on direction while we build carefully for sensitive legal work.',
     label: 'Stealth by design',
   ),
   PrincipleItem(
-    title: 'Legal work needs visible sources.',
+    title: 'Sources should stay visible.',
     description:
-        'Research and drafting flows should make it easier for lawyers to see what informed the work.',
+        'Research and drafting support should make it easy to see what informed the answer.',
     label: 'Clear sources',
   ),
   PrincipleItem(
-    title: 'The lawyer stays in control.',
+    title: 'Lawyers stay in control.',
     description:
         'Juridical Loop OS is being shaped to support professional judgment, not replace it.',
     label: 'Lawyer review',
@@ -163,30 +163,30 @@ const researchFeatures = <FeatureItem>[
 
 const securityFeatures = <FeatureItem>[
   FeatureItem(
-    title: 'Sensitive information handling',
+    title: 'Sensitive work',
     description:
-        'We are thinking carefully about how legal teams handle client and matter information.',
+        'The product direction starts with the reality of client, matter, and firm information.',
     icon: Icons.lock_outline,
     color: AppColors.deepNavy,
   ),
   FeatureItem(
     title: 'Access controls',
     description:
-        'We are planning simple controls so the right people see the right work.',
+        'We are planning clear controls so the right people see the right work.',
     icon: Icons.admin_panel_settings,
     color: AppColors.blue,
   ),
   FeatureItem(
     title: 'Clear sources',
     description:
-        'The experience is meant to keep answers tied to sources that lawyers can review.',
+        'Outputs should stay connected to sources lawyers can inspect.',
     icon: Icons.fact_check,
     color: AppColors.teal,
   ),
   FeatureItem(
-    title: 'Built for review',
+    title: 'Review first',
     description:
-        'The product is being shaped around careful review and lawyer judgment.',
+        'Every workflow should make it easier to check the work before it reaches a client.',
     icon: Icons.privacy_tip,
     color: AppColors.purple,
   ),
@@ -222,7 +222,7 @@ const faqs = <FaqItem>[
   FaqItem(
     question: 'What is Trimurti building?',
     answer:
-        'Trimurti is building Juridical Loop OS, an AI workspace for modern law firms. We are starting with drafting, research, and matter work.',
+        'Trimurti is building Juridical Loop OS, an AI workspace for modern law firms. The first focus areas are drafting, research, matter organization, and review.',
   ),
   FaqItem(
     question: 'Who is Juridical Loop OS designed for?',
@@ -232,7 +232,7 @@ const faqs = <FaqItem>[
   FaqItem(
     question: 'How can interested firms get involved?',
     answer:
-        'Contact us to learn more and tell us what your team needs. We are especially interested in real drafting and research pain points.',
+        'Contact us to learn more and tell us what your team wants to improve. We are especially interested in real drafting, research, and matter workflow pain points.',
   ),
   FaqItem(
     question: 'What principles guide the product?',

@@ -48,13 +48,29 @@ class FinalCtaSection extends StatelessWidget {
                     color: Colors.white.withValues(alpha: 0.78),
                   ),
                 ),
+                const SizedBox(height: 22),
+                const _CtaProofRow(),
               ],
             );
-            final action = PremiumButton(
-              label: 'Contact us',
-              icon: Icons.arrow_forward,
-              secondary: true,
-              onPressed: onContact,
+            final action = Column(
+              crossAxisAlignment: stacked
+                  ? CrossAxisAlignment.start
+                  : CrossAxisAlignment.end,
+              children: [
+                PremiumButton(
+                  label: 'Contact us',
+                  icon: Icons.arrow_forward,
+                  secondary: true,
+                  onPressed: onContact,
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  'Opens a prefilled email.',
+                  style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                    color: Colors.white.withValues(alpha: 0.58),
+                  ),
+                ),
+              ],
             );
 
             if (stacked) {
@@ -73,6 +89,48 @@ class FinalCtaSection extends StatelessWidget {
           },
         ),
       ),
+    );
+  }
+}
+
+class _CtaProofRow extends StatelessWidget {
+  const _CtaProofRow();
+
+  @override
+  Widget build(BuildContext context) {
+    final items = [
+      (Icons.verified, 'MIT Sandbox backed'),
+      (Icons.lock_outline, 'Privacy-first direction'),
+      (Icons.source_outlined, 'Source-aware workflows'),
+    ];
+
+    return Wrap(
+      spacing: 10,
+      runSpacing: 10,
+      children: [
+        for (final item in items)
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
+            decoration: BoxDecoration(
+              color: Colors.white.withValues(alpha: 0.08),
+              borderRadius: BorderRadius.circular(999),
+              border: Border.all(color: Colors.white.withValues(alpha: 0.12)),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(item.$1, color: AppColors.teal, size: 16),
+                const SizedBox(width: 8),
+                Text(
+                  item.$2,
+                  style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                    color: Colors.white.withValues(alpha: 0.82),
+                  ),
+                ),
+              ],
+            ),
+          ),
+      ],
     );
   }
 }

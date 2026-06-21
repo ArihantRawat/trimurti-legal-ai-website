@@ -23,7 +23,7 @@ class _AmbientBackgroundState extends State<AmbientBackground>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 11),
+      duration: const Duration(seconds: 8),
     )..repeat();
   }
 
@@ -66,11 +66,11 @@ class _AmbientPainter extends CustomPainter {
         end: Alignment.bottomRight,
         colors: [
           AppColors.offWhite,
-          Color(0xFFEFF6F3),
-          Color(0xFFF7F3EC),
+          Color(0xFFEAF4F6),
+          Color(0xFFF6F0E8),
           Color(0xFFF8F8F6),
         ],
-        stops: [0, 0.38, 0.72, 1],
+        stops: [0, 0.34, 0.70, 1],
       ).createShader(Offset.zero & size);
     canvas.drawRect(Offset.zero & size, base);
 
@@ -83,26 +83,63 @@ class _AmbientPainter extends CustomPainter {
           RadialGradient(
             colors: [
               AppColors.teal.withValues(alpha: 0.08),
-              AppColors.blue.withValues(alpha: 0.025),
+              AppColors.blue.withValues(alpha: 0.020),
               Colors.transparent,
             ],
-            stops: const [0, 0.34, 1],
+            stops: const [0, 0.30, 1],
           ).createShader(
             Rect.fromCircle(
               center: pointerCenter,
-              radius: size.shortestSide * 0.10,
+              radius: size.shortestSide * 0.075,
             ),
           );
-    canvas.drawCircle(pointerCenter, size.shortestSide * 0.10, pointerPaint);
+    canvas.drawCircle(pointerCenter, size.shortestSide * 0.075, pointerPaint);
 
+    _drawArchitecturalWash(canvas, size);
     _drawPaperRules(canvas, size);
     _drawCitationRibbons(canvas, size);
     _drawReferenceMap(canvas, size, pointerCenter);
   }
 
+  void _drawArchitecturalWash(Canvas canvas, Size size) {
+    final t = progress * math.pi * 2;
+    final washes = [
+      (
+        begin: Offset(size.width * -0.08, size.height * 0.12),
+        end: Offset(size.width * 1.05, size.height * 0.38),
+        color: AppColors.blue.withValues(alpha: 0.030),
+        width: size.width < 720 ? 42.0 : 70.0,
+      ),
+      (
+        begin: Offset(size.width * 0.18, size.height * 0.92),
+        end: Offset(size.width * 1.12, size.height * 0.22),
+        color: AppColors.amber.withValues(alpha: 0.032),
+        width: size.width < 720 ? 34.0 : 58.0,
+      ),
+      (
+        begin: Offset(size.width * -0.05, size.height * 0.70),
+        end: Offset(size.width * 0.88, size.height * 1.04),
+        color: AppColors.teal.withValues(alpha: 0.030),
+        width: size.width < 720 ? 30.0 : 50.0,
+      ),
+    ];
+
+    for (final wash in washes) {
+      final drift = Offset(math.sin(t) * 18, math.cos(t * 0.8) * 14);
+      canvas.drawLine(
+        wash.begin + drift,
+        wash.end - drift,
+        Paint()
+          ..color = wash.color
+          ..strokeWidth = wash.width
+          ..strokeCap = StrokeCap.round,
+      );
+    }
+  }
+
   void _drawPaperRules(Canvas canvas, Size size) {
     final gridPaint = Paint()
-      ..color = AppColors.deepNavy.withValues(alpha: 0.030)
+      ..color = AppColors.deepNavy.withValues(alpha: 0.026)
       ..strokeWidth = 1;
     final step = size.width < 720 ? 36.0 : 48.0;
     final drift = progress * step;
@@ -114,7 +151,7 @@ class _AmbientPainter extends CustomPainter {
     }
 
     final rulePaint = Paint()
-      ..color = AppColors.amber.withValues(alpha: 0.035)
+      ..color = AppColors.amber.withValues(alpha: 0.030)
       ..strokeWidth = 1.2;
     for (double y = 132; y < size.height; y += 184) {
       final wave = math.sin(progress * math.pi * 2 + y * 0.01) * 8;
@@ -130,17 +167,17 @@ class _AmbientPainter extends CustomPainter {
     final t = progress * math.pi * 2;
     final ribbons = [
       (
-        color: AppColors.blue.withValues(alpha: 0.055),
+        color: AppColors.blue.withValues(alpha: 0.045),
         y: size.height * 0.24,
         amp: 28.0,
       ),
       (
-        color: AppColors.teal.withValues(alpha: 0.050),
+        color: AppColors.teal.withValues(alpha: 0.040),
         y: size.height * 0.58,
         amp: 34.0,
       ),
       (
-        color: AppColors.purple.withValues(alpha: 0.035),
+        color: AppColors.purple.withValues(alpha: 0.026),
         y: size.height * 0.82,
         amp: 24.0,
       ),
